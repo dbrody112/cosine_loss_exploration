@@ -19,7 +19,7 @@ from torch.utils.tensorboard import SummaryWriter
 import torch.nn.functional as F
 import torchvision.models as models
 import scipy.io as sio
-
+from chexpert_utils import loadCSV
 
 def showImage(img):
     plt.imshow(transforms.functional.to_pil_image(img))
@@ -69,7 +69,8 @@ class Chexpert(Dataset):
         sample = [torch.FloatTensor(img).to(device),label.to(device)]
 
         return sample
-def loadChexpert(train_csv, test_csv):
+def loadChexpert(train_csv, test_csv,option):
+    loadCSV(option)
     train_paths=[]
     i = 0
     for patient in glob.glob('./CheXpert-v1.0-small/CheXpert-v1.0-small/train/*'):
