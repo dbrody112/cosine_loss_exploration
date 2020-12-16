@@ -23,7 +23,7 @@ test_load_all = DataLoader(test, batch_size = len(test), shuffle=True)
 
 class_length = 0
 
-model = resnet18(dataset,train_csv,class_length)
+model = resnet18(dataset,train_csv)
 model.to(device)
 
 loss_func = "cosine_ohem_0.9ratio_affine_-0.2"
