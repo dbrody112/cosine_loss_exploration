@@ -1,7 +1,7 @@
 from chexpert import loadChexpert
 from flowers import loadFlowersDataset
 from models import tiny_resnet50, resnet18
-import cosine_ohem, CategoricalCrossEntropyLoss from losses
+from losses import cosine_ohem, CategoricalCrossEntropyLoss
 
 dataset = "chexpert"
 #dataset = "flowers"
