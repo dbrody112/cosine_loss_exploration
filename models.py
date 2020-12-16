@@ -39,7 +39,7 @@ def resnet18(dataset, train_csv):
 
 """ constructed on Github user Kaihau Tang in the follwoing link: https://github.com/KaihuaTang/ResNet50-Pytorch-Face-Recognition/blob/master/ResNet.py """
 
-""" a resnet50 with smaller layers that can be used for images with one channel and size 98x98"""
+""" a resnet50 with smaller layers that can be used for images with one channel and size 98x98 (avgpool2d converted from 7 to 4)"""
 
 def tiny_resnet50(pretrained=False, **kwargs):
     """Constructs a ResNet-50 model.
