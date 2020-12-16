@@ -133,25 +133,25 @@ def saveCleanedLabels(minVal=100, maxVal=500, view ="",num_classes = 40):
     print(f'The length of the output is {len(arr_y)}.')
     return
 
-def loadCSV(option):
+def loadCSV(option,minVal = 100, maxVal = 500, num_classes = 40):
     if(option == ''):
         try:
             pd.read_csv("./cleaned_reduced_chexpert_labels_test.csv")
             pd.read_csv("./cleaned_reduced_chexpert_labels_train.csv")
         except FileNotFoundError as e:
-            saveCleanedLabels()
+            saveCleanedLabels(minVal = minVal, maxVal = maxVal, num_classes = num_classes)
         
     elif(option== '_frontal'):
         try:
             pd.read_csv("./cleaned_reduced_chexpert_labels_test_frontal.csv")
             pd.read_csv("./cleaned_reduced_chexpert_labels_train_frontal.csv")
         except FileNotFoundError:
-            saveCleanedLabels(view='_frontal')
+            saveCleanedLabels(view='_frontal',minVal = minVal, maxVal = maxVal, num_classes = num_classes)
         
     elif(option=='_lateral'):
         try:
             pd.read_csv("./cleaned_reduced_chexpert_labels_test_lateral.csv")
             pd.read_csv("./cleaned_reduced_chexpert_labels_train_lateral.csv")
         except FileNotFoundError as e:
-            saveCleanedLabels(view='_lateral')
+            saveCleanedLabels(view='_lateral',minVal = minVal, maxVal = maxVal, num_classes = num_classes)
     return
