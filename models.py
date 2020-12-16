@@ -1,3 +1,27 @@
+import import_ipynb
+import tensorflow as tf
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import glob
+from PIL import Image
+from scipy.ndimage import zoom
+import regex as re
+import os
+import sys
+from sklearn.preprocessing import OneHotEncoder
+import torch
+from torchvision import transforms
+from torch.utils.data import Dataset, DataLoader
+import pytorch_lightning as pl
+from imblearn.metrics import sensitivity_specificity_support
+from torch.utils.tensorboard import SummaryWriter
+import torch.nn.functional as F
+import torchvision.models as models
+import scipy.io as sio
+import torch.nn as nn
+import math 
+import torch.nn.functional as F
 
 
 
@@ -12,10 +36,6 @@ def resnet18(dataset, train_csv):
       resnet18.fc = torch.nn.Linear(512, len(train_csv['labels'].unique()))
       class_length = len(train_csv['labels'].unique())
       
- import torch.nn as nn
-import math 
-import torch.nn.functional as F
-
 
 """ constructed on Github user Kaihau Tang in the follwoing link: https://github.com/KaihuaTang/ResNet50-Pytorch-Face-Recognition/blob/master/ResNet.py """
 
