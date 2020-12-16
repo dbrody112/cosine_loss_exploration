@@ -132,3 +132,26 @@ def saveCleanedLabels(minVal=100, maxVal=500, view ="",num_classes = 40):
     final_df_y.to_csv("cleaned_reduced_chexpert_labels_test"+view+".csv")
     print(f'The length of the output is {len(arr_y)}.')
     return
+
+def loadCSV(option):
+    if(option == ''):
+        try:
+            pd.read_csv("./cleaned_reduced_chexpert_labels_test.csv")
+            pd.read_csv("./cleaned_reduced_chexpert_labels_train.csv")
+        except FileNotFoundError as e:
+            saveCleanedLabels()
+        
+    elif(option== '_frontal'):
+        try:
+            pd.read_csv("./cleaned_reduced_chexpert_labels_test_frontal.csv")
+            pd.read_csv("./cleaned_reduced_chexpert_labels_train_frontal.csv")
+        except FileNotFoundError:
+            saveCleanedLabels(view='_frontal')
+        
+    elif(option=='_lateral'):
+        try:
+            pd.read_csv("./cleaned_reduced_chexpert_labels_test_lateral.csv")
+            pd.read_csv("./cleaned_reduced_chexpert_labels_train_lateral.csv")
+        except FileNotFoundError as e:
+            saveCleanedLabels(view='_lateral')
+    return
