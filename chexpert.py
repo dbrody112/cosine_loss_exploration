@@ -46,21 +46,24 @@ class Chexpert(Dataset):
         sample = [torch.FloatTensor(img).to(device),label.to(device)]
 
         return sample
-def loadChexpert():
-  train_paths=[]
-  i = 0
-  for patient in glob.glob('./CheXpert-v1.0-small/CheXpert-v1.0-small/train/*'):
-      for study in glob.glob(patient+'/*'):
-          for image_name in glob.glob(study+'/*'):
-              if(i in np.array(train_csv['id'])):
-                train_paths.append(image_name)
-            i+=1
-    
-test_paths = []
-i = 0
-for patient in glob.glob('./CheXpert-v1.0-small/CheXpert-v1.0-small/train/*'):
-    for study in glob.glob(patient+'/*'):
-        for image_name in glob.glob(study+'/*'):
-            if(i in np.array(test_csv['id'])):
-                test_paths.append(image_name)
-            i+=1   
+def loadChexpert(train_csv, test_csv):
+    train_paths=[]
+    i = 0
+    for patient in glob.glob('./CheXpert-v1.0-small/CheXpert-v1.0-small/train/*'):
+        for study in glob.glob(patient+'/*'):
+            for image_name in glob.glob(study+'/*'):
+                if(i in np.array(train_csv['id'])):
+                    train_paths.append(image_name)
+                i+=1
+
+            test_paths = []
+    i = 0
+    for patient in glob.glob('./CheXpert-v1.0-small/CheXpert-v1.0-small/train/*'):
+        for study in glob.glob(patient+'/*'):
+            for image_name in glob.glob(study+'/*'):
+                if(i in np.array(test_csv['id'])):
+                    test_paths.append(image_name)
+                i+=1
+    train = Chexpert(csv_file = train_csv,train_csv = train_csv, file_paths = train_paths)  
+    test = Chexpert(csv_file = test_csv,train_csv = train_csv, file_paths = test_paths)
+    return train,test
