@@ -133,7 +133,7 @@ def saveCleanedLabels(minVal=100, maxVal=500, view ="",num_classes = 40):
     print(f'The length of the output is {len(arr_y)}.')
     return
 
-def loadCSV(option = "",minVal = 100, maxVal = 500, num_classes = 40):
+def loadCSV(option = '',minVal = 100, maxVal = 500, num_classes = 40):
     if(option == ''):
         try:
             pd.read_csv("./cleaned_reduced_chexpert_labels_test.csv")
