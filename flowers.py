@@ -88,4 +88,4 @@ def loadFlowerDataset(image_labels_path = './imagelabels.mat', train_test_valida
   test = FlowersDataset(test_csv, train_csv, test_paths)
 
   showImage(test[100][0])
-  return train,test
+  return train,test, train_csv, test_csv
