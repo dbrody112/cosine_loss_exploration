@@ -69,7 +69,7 @@ class Chexpert(Dataset):
         sample = [torch.FloatTensor(img).to(device),label.to(device)]
 
         return sample
-def loadChexpert(train_csv, test_csv,option,minVal=100,maxVal=500,num_classes=40):
+def loadChexpert(train_csv, test_csv,option="",minVal=100,maxVal=500,num_classes=40):
     loadCSV(option,minVal,maxVal,num_classes)
     train_paths=[]
     i = 0
