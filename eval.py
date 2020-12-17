@@ -30,3 +30,44 @@ with torch.no_grad():
         correct += (predicted == torch.argmax(torch.reshape(y_test.long(),(-1,class_length)),dim=1)).sum()
         print(correct)
     print((correct/len(test))*100)
+    
+train_losses = checkpoint['train_losses']
+test_losses = checkpoint['test_losses']
+
+def plotCorrectandLoss(epochs,title_correct, title_losses,train_losses,test_losses):
+  """
+      epochs(int) : # of epochs trained
+      title_correct (string) : title o
+      title_losses (string) : title of second plot against training and testing losses """
+  
+  plt.plot(np.array(train_losses)[1]/len(train), label='training correct')
+  plt.plot(range(0,epochs,3),np.array(test_losses)[1]/len(test),label = 'testing correct')
+  plt.legend()
+  plt.title(title_correct)
+  plt.ylabel('percent samples correct')
+  plt.xlabel('epochs')
+  
+  plt.plot(np.array(train_losses)[0], label='training loss')
+  plt.plot(range(0,epochs,3),np.array(test_losses)[0],label = 'testing loss')
+  plt.legend()
+  plt.title(title_losses)
+  plt.ylabel('loss')
+  plt.xlabel('epochs')
+  
+"""testing softmax vals for first 1000 batches and those for last 1000"""
+"""can take out if you feel it is not necessary"""
+hist = checkpoint['hist']
+
+predicted = [torch.max(np.array(hist)[:,0][i].data,1)[1] for i in range(100)]
+third = [np.array(predicted)[i][3] for i in range(len(predicted))]
+plt.plot(third)
+plt.title('cosine ohem on affine transformed chexpert with ratio 0.9 and lambda 0 confidence (first 100 batches)')
+plt.xlabel('batch (each epoch is approximately 70 batches)')
+plt.ylabel('softmax value')
+
+predicted = [torch.max(np.array(hist)[:,0][i].data,1)[1] for i in range(len(hist)-100,len(hist))]
+third = [np.array(predicted)[i][3] for i in range(len(predicted))]
+plt.plot(third)
+plt.title('cosine ohem on affine transformed chexpert with ratio 0.9 and lambda 0 confidence (last 100 batches)')
+plt.xlabel('batch (each epoch is approximately 70 batches)')
+plt.ylabel('softmax value')
