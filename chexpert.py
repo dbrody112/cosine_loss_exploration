@@ -1,4 +1,3 @@
-
 import tensorflow as tf
 import matplotlib.pyplot as plt
 import numpy as np
@@ -51,6 +50,7 @@ class Chexpert(Dataset):
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         if torch.is_tensor(idx):
             idx = idx.tolist()
+        
         img = Image.open(self.file_paths[idx])
         img = np.array(img)
         img = transforms.functional.to_pil_image(img)
@@ -69,10 +69,13 @@ class Chexpert(Dataset):
         sample = [torch.FloatTensor(img).to(device),label.to(device)]
 
         return sample
-def loadChexpert(test_csv_file_path= "./cleaned_reduced_chexpert_labels_train", train_csv_file_path ="./cleaned_reduced_chexpert_labels_test" option='',minVal=100,maxVal=500,num_classes=40):
+
+def loadChexpert(train_csv_file_path= "./cleaned_reduced_chexpert_labels_train", test_csv_file_path ="./cleaned_reduced_chexpert_labels_test",option='',minVal=100,maxVal=500,num_classes=40):
     loadCSV(option,minVal,maxVal,num_classes)
-    train_csv = pd.read_csv(test_csv_file_path+option+".csv")
-    test_csv = pd.read_csv(train_csv_file_path+option+".csv")
+    train_csv = pd.read_csv(train_csv_file_path+option+".csv")
+    test_csv = pd.read_csv(test_csv_file_path+option+".csv")
+    
+    test_paths = []
     train_paths=[]
     i = 0
     for patient in glob.glob('./CheXpert-v1.0-small/CheXpert-v1.0-small/train/*'):
@@ -82,7 +85,7 @@ def loadChexpert(test_csv_file_path= "./cleaned_reduced_chexpert_labels_train", 
                     train_paths.append(image_name)
                 i+=1
 
-            test_paths = []
+            
     i = 0
     for patient in glob.glob('./CheXpert-v1.0-small/CheXpert-v1.0-small/train/*'):
         for study in glob.glob(patient+'/*'):
@@ -90,6 +93,8 @@ def loadChexpert(test_csv_file_path= "./cleaned_reduced_chexpert_labels_train", 
                 if(i in np.array(test_csv['id'])):
                     test_paths.append(image_name)
                 i+=1
+    print(len(train_paths))
     train = Chexpert(csv_file = train_csv,train_csv = train_csv, file_paths = train_paths)  
     test = Chexpert(csv_file = test_csv,train_csv = train_csv, file_paths = test_paths)
     return train,test,train_csv, test_csv
+
