@@ -1,17 +1,3 @@
-import import_ipynb
-import tensorflow as tf
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-import glob
-from PIL import Image
-from scipy.ndimage import zoom
-import regex as re
-import os
-import sys
-from sklearn.preprocessing import OneHotEncoder
-import torch
-from torchvision import transforms
 from torch.utils.data import Dataset, DataLoader
 import pytorch_lightning as pl
 from imblearn.metrics import sensitivity_specificity_support
@@ -35,6 +21,7 @@ def resnet18(dataset, train_csv):
   if(dataset == "flowers"):
       resnet18.fc = torch.nn.Linear(512, len(train_csv['labels'].unique()))
       class_length = len(train_csv['labels'].unique())
+  return class_length,resnet18
       
 
 """ constructed on Github user Kaihau Tang in the follwoing link: https://github.com/KaihuaTang/ResNet50-Pytorch-Face-Recognition/blob/master/ResNet.py """
