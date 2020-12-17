@@ -1,7 +1,7 @@
 from chexpert import loadChexpert
-from flowers import loadFlowersDataset
+from flowers import loadFlowerDataset
 from models import tiny_resnet50, resnet18
-from losses import cosine_ohem, CategoricalCrossEntropyLoss
+from losses import cosine_OHEM, CategoricalCrossEntropyLoss
 
 
 import tensorflow as tf
@@ -25,18 +25,20 @@ import torch.nn.functional as F
 import torchvision.models as models
 import scipy.io as sio
 from chexpert_utils import loadCSV
+import torch.nn as nn
+import torch.nn.functional as F
 
 dataset = "chexpert"
 #dataset = "flowers"
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 train = []
-test []
+test  = []
 train_csv = []
 test_csv = []
 if(dataset == "chexpert"):
   train, test,train_csv, test_csv = loadChexpert()
 elif(dataset=="flowers"):
-  train,test, train_csv, test_csv = loadFlowersDataset()
+  train,test, train_csv, test_csv = loadFlowerDataset()
   
 batch_size = 100
 
@@ -44,9 +46,8 @@ test_dataloader= DataLoader(test, batch_size = batch_size, shuffle=True)
 train_dataloader = DataLoader(train, batch_size = batch_size, shuffle = True)
 test_load_all = DataLoader(test, batch_size = len(test), shuffle=True)
 
-class_length = 0
-
-model = resnet18(dataset,train_csv)
+class_length= 0
+class_length, model = resnet18(dataset,train_csv)
 model.to(device)
 
 loss_func = "cosine_ohem_0.9ratio_affine_-0.2"
