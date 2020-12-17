@@ -21,26 +21,30 @@ import torch.nn.functional as F
 import torchvision.models as models
 import scipy.io as sio
 from chexpert_utils import loadCSV
+from models import resnet18
+from flowers import loadFlowerDataset
+from chexpert import loadChexpert
 
 
-checkpoint = "./checkpoints/cosine_ohem_20classes_0.1_50epochs/cosine_OHEM_0.1_50.pt"
+checkpoint = "./cosine_ohem_0.9ratio_affine_-0.2_40.pt"
 checkpoint = torch.load(checkpoint)
 
 dataset = "chexpert"
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 train = []
-test []
+test = []
 train_csv = []
 test_csv = []
 if(dataset == "chexpert"):
   train, test,train_csv, test_csv = loadChexpert()
 elif(dataset=="flowers"):
-  train,test, train_csv, test_csv = loadFlowersDataset()
+  train,test, train_csv, test_csv = loadFlowerDataset()
 
-class_length = 0
 
-model = resnet18(dataset,train_csv)
+
+class_length, model = resnet18(dataset,train_csv)
 model.load_state_dict(checkpoint['model_state_dict'])
+model.to(device)
 
 test_load_all = DataLoader(test, batch_size = 100, shuffle=True)
 
@@ -54,7 +58,7 @@ with torch.no_grad():
         predicted = torch.max(y_val.data,1)[1]
         correct += (predicted == torch.argmax(torch.reshape(y_test.long(),(-1,class_length)),dim=1)).sum()
         print(correct)
-    print((correct/len(test))*100)
+    print(f'percent correct:{(correct/len(test))*100}')
     
 train_losses = checkpoint['train_losses']
 test_losses = checkpoint['test_losses']
@@ -96,3 +100,4 @@ plt.plot(third)
 plt.title('cosine ohem on affine transformed chexpert with ratio 0.9 and lambda 0 confidence (last 100 batches)')
 plt.xlabel('batch (each epoch is approximately 70 batches)')
 plt.ylabel('softmax value')
+
