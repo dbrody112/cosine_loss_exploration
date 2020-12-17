@@ -1,5 +1,4 @@
 
-
 import tensorflow as tf
 import matplotlib.pyplot as plt
 import numpy as np
@@ -21,6 +20,8 @@ import torch.nn.functional as F
 import torchvision.models as models
 import scipy.io as sio
 from chexpert_utils import loadCSV
+import torch.nn as nn
+import torch.nn.functional as F
 
 class CategoricalCrossEntropyLoss(nn.Module):
     def __init__(self,loss_logger = None):
