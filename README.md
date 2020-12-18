@@ -6,4 +6,6 @@ The big idea around the project was to create an OHEM that uses cosine loss+cros
 
 [12/17/2020] Update: cosine ohem on the affine transformed chexpert actually showed that subtracting the cosine loss from the cross entropy provides a higher correlation from train to test and therefore overfits later than the normal ohem while adding cross entropy from the cosine loss does the exact opposite. This is shown in these figures:
 
+![subplot_graph_cosine_ohem_overfitting](https://user-images.githubusercontent.com/59486373/102566213-0e65bb00-40ad-11eb-9e70-f07d2d84fd5d.png)
+
 
