@@ -1,4 +1,4 @@
-# cosine_ohem_loss_exploration
+# cosine ohem loss exploration
 Note: Python under should now work and the Jupyter Notebook is messy but also works. Use any one of these two or both for reference. For any version as well you must run the code in folder with the chexpert directory. The chexpert dataset requires permission but is completely downloadable here : https://stanfordmlgroup.github.io/competitions/chexpert/
 
 Project : On optimization of confidence levels in small datasets
