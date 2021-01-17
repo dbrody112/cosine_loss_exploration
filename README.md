@@ -1,5 +1,5 @@
 # Cosine Ohem Loss Exploration
-Note: Python under should now work and the Jupyter Notebook is messy but also works. Use any one of these two or both for reference. For any version as well you must run the code in folder with the chexpert directory. The chexpert dataset requires permission but is completely downloadable here : https://stanfordmlgroup.github.io/competitions/chexpert/
+Note: Python should now work and the Jupyter Notebook is messy but also works. Use any one of these two or both for reference. For any version as well you must run the code in a directory containing the chexpert dataset. The chexpert dataset requires permission but is completely downloadable here : https://stanfordmlgroup.github.io/competitions/chexpert/
 
 
 ![ohem](https://user-images.githubusercontent.com/59486373/104828037-36267b00-5833-11eb-8e63-12c1eba829bd.png)
