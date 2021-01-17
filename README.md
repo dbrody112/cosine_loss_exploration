@@ -14,7 +14,7 @@ Note: Python should now work and the Jupyter Notebook is messy but also works. U
 
 The big idea around the project was to create an OHEM that uses cosine loss+cross entropy as the top-k loss (referred to as cosine OHEM loss) instead of the original cross entropy for the top-k loss as shown in Figure 1. The basis of this idea was that the top-k loss inside of the cosine OHEM loss would be confident from the cosine entropy and act as a confidence metric so that any values that would be too confident were penalized. In this way, we could find a way to prevent overconfidence in small datasets. Unfortunately, for the time allotted for the project, our method backfired and became overly confident, incorrectly shifting the weights and choosing the wrong losses. 
 
-<i>For more info feel free to read cosine_ohem_loss_paper.pdf.</i>
+<i>*For more info feel free to read cosine_ohem_loss_paper.pdf.</i>
 
 [12/17/2020] Update: cosine ohem on the affine transformed chexpert actually showed that subtracting the cosine loss from the cross entropy provides a higher correlation from training accuracy to testing accuracy and therefore overfits later than the normal ohem. Adding cross entropy to the cosine loss, however, does the exact opposite. This is shown in these figures:
 
