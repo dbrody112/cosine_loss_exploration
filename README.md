@@ -8,7 +8,7 @@ Note: Python should now work and the Jupyter Notebook is messy but also works. U
 
 ![cosine_ohem](https://user-images.githubusercontent.com/59486373/104856875-d8516c00-58e2-11eb-84ed-6ce40a3c53b1.png)
 
-<h4><strong>Figure 2: Formulation of Cosine OHEM </strong></h4>
+<h4><strong>Figure 2: Formulation of Cosine OHEM Top-K Loss</strong></h4>
 
 <h2>Objective:  Optimization of Confidence Levels in Small Datasets</h2>
 
