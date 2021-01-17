@@ -18,6 +18,6 @@ The big idea around the project was to create an OHEM that uses cosine loss+cros
 
 [12/17/2020] Update: cosine ohem on the affine transformed chexpert actually showed that subtracting the cosine loss from the cross entropy provides a higher correlation from training accuracy to testing accuracy and therefore overfits later than the normal ohem. Adding cross entropy to the cosine loss, however, does the exact opposite. This is shown in these figures over 15 epochs (with epochs on x-axis and accuracy on y-axis):
 
-![subplot_graph_cosine_ohem_overfitting](https://user-images.githubusercontent.com/59486373/102566213-0e65bb00-40ad-11eb-9e70-f07d2d84fd5d.png)
+![ohemmm](https://user-images.githubusercontent.com/59486373/104858047-92000b00-58ea-11eb-9cba-24532ce3501a.png)
 
 <i>*Note: Testing accuracy was only monitored every three epochs so the testing accuracy curve does not have as many points as the training accuracy curve</i>
