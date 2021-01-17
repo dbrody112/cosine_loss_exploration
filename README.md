@@ -9,11 +9,11 @@ Note: Python under should now work and the Jupyter Notebook is messy but also wo
 
 <h2>Objective:  Optimization of Confidence Levels in Small Datasets</h2>
 
-The big idea around the project was to create an OHEM that uses cosine loss+cross entropy as the top-k loss (referred to as cosine OHEM loss) instead of the original cross entropy for the top-k loss as shown in Figure 1. The basis of this idea was that the top-k loss inside of the cosine OHEM loss would be confident from the cosine entropy and act as a confidence metric so that any values that would be too confident were penalized. In this way, we could find a way to prevent overconfidence in small datasets. Unfortunately our method backfired and became overly confident, incorrectly shifting the weights and choosing the wrong losses. For more info feel free to read cosine_ohem_loss_paper.pdf.
+The big idea around the project was to create an OHEM that uses cosine loss+cross entropy as the top-k loss (referred to as cosine OHEM loss) instead of the original cross entropy for the top-k loss as shown in Figure 1. The basis of this idea was that the top-k loss inside of the cosine OHEM loss would be confident from the cosine entropy and act as a confidence metric so that any values that would be too confident were penalized. In this way, we could find a way to prevent overconfidence in small datasets. Unfortunately, for the time allotted for the project, our method backfired and became overly confident, incorrectly shifting the weights and choosing the wrong losses. For more info feel free to read cosine_ohem_loss_paper.pdf.
 
 
 
-[12/17/2020] Update: cosine ohem on the affine transformed chexpert actually showed that subtracting the cosine loss from the cross entropy provides a higher correlation from train to test and therefore overfits later than the normal ohem while adding cross entropy from the cosine loss does the exact opposite. This is shown in these figures:
+[12/17/2020] Update: cosine ohem on the affine transformed chexpert actually showed that subtracting the cosine loss from the cross entropy provides a higher correlation from training accuracy to testing accuracy and therefore overfits later than the normal ohem. Adding cross entropy to the cosine loss, however, does the exact opposite. This is shown in these figures:
 
 ![subplot_graph_cosine_ohem_overfitting](https://user-images.githubusercontent.com/59486373/102566213-0e65bb00-40ad-11eb-9e70-f07d2d84fd5d.png)
 
