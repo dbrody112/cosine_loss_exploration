@@ -20,4 +20,4 @@ The big idea around the project was to create an OHEM that uses cosine loss+cros
 
 ![subplot_graph_cosine_ohem_overfitting](https://user-images.githubusercontent.com/59486373/102566213-0e65bb00-40ad-11eb-9e70-f07d2d84fd5d.png)
 
-
+*Note: Training 
