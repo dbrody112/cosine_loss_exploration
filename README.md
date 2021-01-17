@@ -5,7 +5,7 @@ Note: Python under should now work and the Jupyter Notebook is messy but also wo
 
 ![ohem](https://user-images.githubusercontent.com/59486373/104828037-36267b00-5833-11eb-8e63-12c1eba829bd.png)
 
-<h3><strong>Figure 1: Formulation of OHEM Loss with Input and Top-K Loss Highlighted</strong></h3>
+<h4><strong>Figure 1: Formulation of OHEM Loss with Input and Top-K Loss Highlighted</strong></h4>
 
 <h2>Objective:  Optimization of Confidence Levels in Small Datasets</h2>
 
