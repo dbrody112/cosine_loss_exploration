@@ -3,6 +3,10 @@ Note: Python under should now work and the Jupyter Notebook is messy but also wo
 
 <h2>OHEM Loss</h2>
 
+![ohem](https://user-images.githubusercontent.com/59486373/104828037-36267b00-5833-11eb-8e63-12c1eba829bd.png)
+
+<strong>Figure 1: Formulation of OHEM Loss</strong>
+
 <h3>Objective:  Optimization of Confidence Levels in Small Datasets</h3>
 
 The big idea around the project was to create an OHEM that uses cosine loss+cross entropy as the top-k loss instead of the original cross entropy (cosine OHEM loss). The basis of this idea was that the top-k loss inside of the cosine OHEM loss would be confident from the cosine entropy and act as a confidence metric so that any values that would be too confident were penalized. In this way, we could find a way to prevent overconfidence in small datasets. Unfortunately our method backfired and became overly confident, incorrectly shifting the weights and choosing the wrong losses. For more info feel free to read cosine_ohem_loss_paper.pdf.
